@@ -1,0 +1,23 @@
+{
+  "name": "simple-shop",
+  "version": "1.0.0",
+  "description": "implimentation simple e-commerce shop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ./src --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ani Voskanyan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  }
+}
