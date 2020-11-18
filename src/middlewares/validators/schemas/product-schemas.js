@@ -33,18 +33,18 @@ const productsCreateSchema = Joi.object({
   
 const productsUpdateSchema = Joi.object({
     body: Joi.object({
-        shop_id: number.integer().required(),
-        name: string.trim().max(200).required(),
+        shop_id: number.integer(),
+        name: string.trim().max(200),
         description: string.trim().max(500),
-        type: string.trim().max(200).required(),
+        type: string.trim().max(200),
         status: string.valid(...status).trim(),
-        quantity: number.integer().required(),
+        quantity: number.integer(),
         colors: array.items(
             Joi.object({
-                color: string.trim().max(200).required(),
-                price: number.integer().required(),
-                quantity: number.integer().required(),
-            }).required()
+                color: string.trim().max(200),
+                price: number.integer(),
+                quantity: number.integer(),
+            })
         ),
         sizes: array.items(string)
     }),
