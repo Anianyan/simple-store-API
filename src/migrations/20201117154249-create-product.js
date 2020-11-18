@@ -6,11 +6,16 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type : Sequelize.BIGINT,
       },
       shop_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'shops',
+          key: 'id',
+        },
         allowNull: false,
+        onDelete: 'CASCADE',
       },
       name: {
         type: Sequelize.STRING,
