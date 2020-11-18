@@ -112,8 +112,17 @@ async function deleteProduct(req, res, next) {
 }
 
 async function getAvailableProducts(req, res, next) {
+  const { limit, offset } = req.query;
+
   try {
-    const products = await ProductModel.findAll({
+    if (limit) {
+      limits = {
+        offset: (offset) ? parseInt(offset) : 0,
+        limit: parseInt(limit),
+      };
+    }
+    const products = await ProductModel.findAndCountAll({
+      limits,
       where: {
         quantity: {
           [Op.gte]: 1,

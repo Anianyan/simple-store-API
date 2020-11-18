@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         return colors;
       },
     },
-    	sizes: {
+    sizes: {
       type: DataTypes.JSON,
       get: function() {
         const sizes = this.getDataValue('sizes');
