@@ -1,4 +1,5 @@
 const HttpStatus = require('http-status-codes');
+const { Op } = require("sequelize");
 
 const { ProductModel } = require('../models');
 const { NotFoundError } = require('../errors');
@@ -28,7 +29,7 @@ async function createProduct(req, res, next) {
             sizes
         });
 
-        return res.status(HttpStatus.NOT_FOUND).json({ data: product });
+        return res.status(HttpStatus.OK).json({ data: product });
     } catch (error) {
         return next(error);
     }
@@ -95,11 +96,10 @@ async function deleteProduct(req, res, next) {
 
     try {
         const product = await ProductModel.update(
-            { status: "not-available" },
+            { status: "deleted" },
             { where: {id: productId} }
         );
 
-        console.log('product', product);
         if (!product[0]) {
             throw new NotFoundError('Product is not found');
         }
@@ -111,12 +111,29 @@ async function deleteProduct(req, res, next) {
 
 }
 
-async function getProducts(req, res, next) {
+async function getAvailableProducts(req, res, next) {
+    try {
+        const products = await ProductModel.findAll({
+            where: {
+                quantity: {
+                    [Op.gte]: 1,
+                },
+                status: 'active'
+            }
+        });
 
+        if (!products) {
+            throw new NotFoundError('Product is not found');
+        }
+
+        return res.status(HttpStatus.OK).json({ data: products });
+    } catch(error) {
+        next(error);
+    }
 }
 
 module.exports = {
-    getProducts,
+    getAvailableProducts,
     createProduct,
     getProduct,
     updateProduct,

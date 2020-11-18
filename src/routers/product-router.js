@@ -9,7 +9,7 @@ const {
 } = require('../middlewares/validators/product-validator');
 
 const {
-    getProducts,
+    getAvailableProducts,
     createProduct,
     getProduct,
     updateProduct,
@@ -21,7 +21,6 @@ router.get('/:productId', validateProductId, getProduct);
 router.patch('/:productId', validateUpdateProduct, updateProduct);
 router.delete('/:productId', deleteProduct);
 
-router.use('v1', router);
-router.get('/', getProducts);
+router.get('/v1/list', getAvailableProducts);
 
 module.exports = router;
