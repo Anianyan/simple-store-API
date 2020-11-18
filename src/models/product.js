@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    colours: DataTypes.JSON,
+    colors: DataTypes.JSON,
     sizes: DataTypes.JSON,
   }, {
     sequelize,

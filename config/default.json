@@ -1,5 +1,15 @@
 {
     "api": {
         "port": 3000
+    },
+    "validation": {
+        "options": {
+            "abortEarly": true,
+            "allowUnknown": true,
+            "convert": true
+        },
+        "product": {
+            "status": ["active", "deleted", "not-available"]
+        }
     }
 }

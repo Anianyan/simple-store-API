@@ -1,0 +1,1 @@
+module.exports.ProductSchemas = require('./product-schemas');

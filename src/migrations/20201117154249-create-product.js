@@ -35,7 +35,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      colours: {
+      colors: {
         type: Sequelize.JSON,
       },
       sizes: {
