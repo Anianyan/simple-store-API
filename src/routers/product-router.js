@@ -3,17 +3,17 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    validateCreateProduct,
-    validateProductId,
-    validateUpdateProduct
+  validateCreateProduct,
+  validateProductId,
+  validateUpdateProduct,
 } = require('../middlewares/validators/product-validator');
 
 const {
-    getAvailableProducts,
-    createProduct,
-    getProduct,
-    updateProduct,
-    deleteProduct
+  getAvailableProducts,
+  createProduct,
+  getProduct,
+  updateProduct,
+  deleteProduct,
 } = require('../controllers/product-controller');
 
 router.post('/', validateCreateProduct, createProduct);
